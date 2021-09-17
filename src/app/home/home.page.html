@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Register
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- header covid image  -->
+  <div class="screen">
+    <div class="img">
+      <img src="assets/img/corona1.jpg">
+    </div>
+
+    <!-- generated otp shown  -->
+    <div class="otp">
+      <ion-label [style.color]=" 'otpColor' ">{{generatedOtp}}</ion-label>
+    </div>
+
+    <div class="user-form">
+      <form >
+
+        <!-- username row -->
+        <ion-item >
+          <ion-label [ngStyle]="bg" position="floating" >Username</ion-label>
+          <ion-input name="username" [(ngModel)]="username" (ionChange)="validateUsername()"></ion-input>
+        </ion-item>
+        <!-- username error message -->
+        <div class="otp">
+          <ion-label style="color: red;">{{usernameErrorMessage}}</ion-label>
+        </div>
+        <!-- mobile row -->
+        <ion-item>
+          <ion-label>+91</ion-label>
+          <ion-input name="mobile" placeholder="Mobile" [(ngModel)]="mobile" (ionFocus)="validateUsername()" (ionBlur)="validatMobile()" ></ion-input>
+        </ion-item>
+        <!-- mobile error message -->
+        <div class="otp">
+          <ion-label style="color: red;">{{mobileErrorMessage}}</ion-label>
+        </div>
+        <!-- otp row -->
+        <ion-item >
+          <ion-input name="otp" placeholder="OTP" [(ngModel)]="otp" (ionFocus)="validatMobile()" (ionChange)="validateOtp()"></ion-input>
+        </ion-item>
+        <!-- otp error message -->
+        <div class="otp">
+          <ion-label style="color: red;">{{otpErrorMessage}}</ion-label>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</ion-content>

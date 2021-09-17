@@ -1,0 +1,42 @@
+ion-menu{
+    
+    ion-list{
+        list-style: none;
+        text-decoration: none;
+
+        ion-item{
+            list-style: none;
+            text-decoration: none;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            --border-style:none ;
+            border: 1px solid grey;
+            border-radius: 5px;
+            margin-bottom: 5px;
+
+            ion-icon{
+                font-size: medium;
+                margin-right: 10px;
+
+            }
+            ion-label{
+                font-size: medium;
+                margin-left: 0;
+
+                a{
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+        }
+    }
+
+    span{
+        position:absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgb(245, 56, 56);
+    }
+}

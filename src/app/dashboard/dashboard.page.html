@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button id="main-content"  expand="block"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Covid-19</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+   
+
+  <!-- dashboard main content -->
+  <div class="screen">
+
+   <div class="fixed-helpline-btn">
+    <button (click)="callFunction()"><ion-icon name="call"></ion-icon>Call Helpline</button>
+   </div>
+  
+    <!-- header div -->
+    <div class="header">
+      <div class="heading">
+        <img src="assets/img/satyamev.png" />
+        <h2>Covid-19 Live Tracker</h2>
+      </div>
+      <p>Here you can track the spread of the corona-virus (Covid-19) pandemic cases in India and worldwide.</p>
+      
+      <!-- helpline div -->
+      <div class="help-line" (click)="callFunction()">
+        <!-- icon -->
+        <div><ion-icon name="call"></ion-icon></div>
+        <div><p>Check for the helpline number in case of emergency</p></div>
+      </div>
+    </div>
+
+    <!-- prevention div -->
+    <div class="prevention">
+      <div class="prevention-heading-div">
+        <h3>Preventions</h3>
+      </div>
+      <!-- preventions images -->
+      <div class="prevention-img">
+        <div>
+          <img src="assets/img/keepDistancing1.jpg" />
+          <p>Keep distance</p>
+        </div>
+        <div>
+          <img src="assets/img/washHands1.png" />  
+          <p>Wash your hands</p>
+        </div>
+        <div>
+          <img src="assets/img/wearMask1.jpg" />  
+          <p>Wear masks</p>
+        </div>        
+      </div>
+    </div>
+
+    <!-- corona cases check div and world image -->
+    <div class="check-corona-cases">
+      <div class="check-corona-cases-heading">
+        <h3>Check Nationwide and Worldwide</h3>
+      </div>
+
+      <div class="check-corona-cases-img">
+        <img src="assets/img/worldImg1.png" routerLink="/covid-data" />
+      </div>
+    </div>
+  </div>
+
+</ion-content>

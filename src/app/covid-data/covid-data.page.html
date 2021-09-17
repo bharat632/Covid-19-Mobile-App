@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon slot="start" name="arrow-back-outline" (click)="back()"></ion-icon>
+    <ion-title>Covid-Data</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- this contain search bar and filter -->
+  <div class="search-filter" >
+    <ion-input name="countryName" [(ngModel)]="countryName" (ionChange)="searchedCountries()" placeholder="Search">
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-input>
+    <div class="filter-div">
+      <div (click)="getUserCurrentLocation()">Current Data</div>
+      <div expand="block" (click)="presentPopover($event)">
+        <ion-icon name="filter-outline"></ion-icon>
+        Filter
+      </div>
+    </div>
+  </div>
+
+  <!-- this div will show all the countries with their flag images -->
+  <!-- countries shown with flag -->
+  <div class="countriesList" *ngIf="!isShownCurrentData">
+
+    <!-- table of all loaded countries shown when initially load of page-->
+    <table *ngIf="isAllCountriesShow">
+      <tr *ngFor="let countries of allCountries">
+        <td>
+          <img src="{{countries.countryInfo.flag}}">
+        </td>
+        <td (click)="getCovidDataCountryWise(countries.country)">
+          {{countries.country}}
+        </td>
+      </tr>
+    </table>  
+
+    <!-- table of all searched countries shown after user input -->
+    <table *ngIf=" !isAllCountriesShow">
+      <tr *ngFor="let countries of searchedCountry">
+        <td>
+          <img src="{{countries.countryInfo.flag}}">
+        </td>
+        <td (click)="getCovidDataCountryWise(countries.country)">
+          {{countries.country}}
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+
+  <!-- this div will show all the covid cases data accourding to country and states -->
+
+  <!-- show covid-data of user current location -->
+  <div class="shown-current-data" *ngIf="isShownCurrentData">
+
+    <div class="covid-update-header">
+      <h4>COVID-19 Cases Overview</h4>
+
+      <div class="current-location-data-shown">
+        <div class="state">
+          <table>
+            <tr><th colspan="12"><h5 (click)="presentPopoverState()">{{_stateWiseDate.name}}</h5></th></tr>
+            <tr>
+              <td>
+                Active
+                <tr style="color:rgb(40, 121, 243);">+{{_stateWiseDate.active}}</tr>
+              </td>
+              <td>
+                Recovered
+                <tr style="color:rgb(16, 206, 16);">+{{_stateWiseDate.recovered}}</tr>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Deceased
+                <tr style="color:rgb(95, 94, 94)">+{{_stateWiseDate.deaths}}</tr>
+              </td>
+              <td>
+                Confirmed
+                <tr style="color:rgb(240, 34, 34);">+{{_stateWiseDate.confirmed}}</tr>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="country">
+          <table>
+            <tr><th colspan="12" slot="start"><h5>{{country}}</h5></th></tr>
+            <tr>
+              <td>
+                Active
+                <tr style="color:rgb(40, 121, 243);">+{{totalActive}}</tr>
+              </td>
+              <td>
+                Recovered 
+                <tr style="color:rgb(16, 206, 16);">+{{totalRecovered}}</tr>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Deceased
+                <tr style="color:rgb(95, 94, 94)">+{{totalDeaths}}</tr>
+              </td>
+              <td>
+                Confirmed
+                <tr style="color:rgb(240, 34, 34);" >+{{totalConfirmed}}</tr>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</ion-content>
